@@ -1,0 +1,22 @@
+<!-- eventually this oughta be a "partial" or whatever it's called in Djangoland -->
+
+<h1>New Poem</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'poems:create' poll.id %}" method="post">
+{% csrf_token %}
+<textarea rows="10" cols="30">
+ Paste source content here.
+</textarea>
+
+<input type="url" name="source_url" />
+<label for="source_url">URL to source text</label></br>
+
+<input type="submit" value="Poemize" />
+</form>
+
+<!-- UI: 
+  1. give boxes to choose source, format
+  2. "approval page" with button to "show it, poet" or not
+  3. share page -->

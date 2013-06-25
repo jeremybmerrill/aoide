@@ -9,6 +9,9 @@ urlpatterns = patterns('',
     # url(r'^$', 'poemsweb.views.home', name='home'),
     # url(r'^poemsweb/', include('poemsweb.foo.urls')),
 
+    url(r'^$', include('poems.urls')),
+    url(r'^poems/', include('poems.urls')),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

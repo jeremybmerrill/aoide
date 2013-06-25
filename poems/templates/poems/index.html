@@ -1,0 +1,43 @@
+
+
+
+
+<!-- 
+
+center top: create your own poem
+  source title:
+  source url/text:
+  format dropdown:
+
+bottom left: top rated poems this week
+bottom right: newly-created poems
+
+-->
+<div id="center" style="height:400px">
+  DIY
+</div>
+
+<div id="bottom-left" class="half-width">
+  {% if latest_poems_list %}
+      <ul>
+      {% for poem in latest_poems_list %}
+          <li><a href="{% url 'detail' poem.id %}">{{ poem }}</a></li>
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p>No recent poems.</p>
+  {% endif %}
+</div>
+<div id="bottom-right" class="half-width">
+  {% if best_poems_list %}
+      <ul>
+      {% for poem in best_poems_list %}
+          <li><a href="{% url 'detail' poem.id %}">{{ poem }}</a></li>
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p>No awesome poems :(</p>
+  {% endif %}
+
+</div>
+

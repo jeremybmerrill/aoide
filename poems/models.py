@@ -13,8 +13,10 @@ class Poem(models.Model):
     source = models.ForeignKey(Source)
     text = models.TextField('poem text')
     format_name = models.CharField('poem type', max_length=30)
-    votes = models.IntegerField(default=0)
-    gen_date = pub_date = models.DateTimeField('generation date')
-
+    up_votes = models.IntegerField(default=0)
+    down_votes = models.IntegerField(default=0)
+    gen_date = models.DateTimeField('generation date')
     def __unicode__(self):
       return self.text
+    def short_title(self):
+      return self.source().title()
