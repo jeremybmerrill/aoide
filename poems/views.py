@@ -3,6 +3,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
+from django.template import RequestContext
 
 from poems.models import Poem, Source
 import poemformat
@@ -14,7 +15,7 @@ import nltk.tokenize.punkt
 
 def index(request):
     latest_poems_list = Poem.objects.order_by('-gen_date')[:5]
-    best_poems_list = Poem.objects.order_by('-votes')[:5]
+    best_poems_list = Poem.objects.order_by('-votes')[:5] #todo: denormalize database to keep track of sum of votes, or something
     #TODO display source titles
     context = RequestContext(request, {
         'latest_poems_list': latest_poems_list,
@@ -24,7 +25,7 @@ def index(request):
 
 def detail(request, poem_id):
     poem = get_object_or_404(Poem, pk=poem_id)
-    return render(request, 'poems/detail.html', {'poem': poem})
+    return render(request, 'poems/detail.html', {'poem': poem,})
 
 def new(request):
     return render(request, 'poems/new.html', {'format_names': [c.__name__ for c in poemformat.PoemFormat.__subclasses__()]} )
@@ -35,10 +36,12 @@ def snap(request, poem_id): #or roll eyes / sigh loudly
     if vote_polarity == "snap":
       poem.up_votes += 1
     elif vote_polarity == "sigh":
-      poem.down_votes -= 1
+      poem.down_votes += 1
     else:
       #TODO: make this not happen
       raise Http404
+    poem.votes = poem.up_votes - poem.down_votes
+    poem.count_votes = poem.up_votes + poem.down_votes
     selected_choice.save()
     # Always return an HttpResponseRedirect after successfully dealing
     # with POST data. This prevents data from being posted twice if a
@@ -60,7 +63,7 @@ def create(request):
         #  2. "approval page" with button to "show it, poet" or not
         #  3. share page
         sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
-        linetexts = sent_detector.tokenize(source_text)
+        linetexts = sent_detector.tokenize(source_text.replace("\r\n", ". "))
 
         poemFormatClass = getattr( poemformat, format_name )()
         p = Poemifier( poemFormatClass )
@@ -71,16 +74,17 @@ def create(request):
             continue
           #p.try_line(line) #too slow
           p.add_line(line)
-        poemDB = Poem()
-        poem_text = poemFormatClass.format_poem(  p.create_poem(True) )
-        poemDB.text = poem_text
-        poemDB.format_name = format_name
-        poemDB.gen_date = datetime.datetime.now()
-        poemDB.save()
+        djangoPoem = Poem()
+        raw_poem =  p.create_poem(True)
+        poem_text = poemFormatClass.format_poem( raw_poem ).split("\n", "<br />")
+        djangoPoem.text = poem_text
+        djangoPoem.format_name = format_name
+        djangoPoem.gen_date = datetime.datetime.now()
+        djangoPoem.save()
         #TODO
 
           # Always return an HttpResponseRedirect after successfully dealing
           # with POST data. This prevents data from being posted twice if a
           # user hits the Back button.
-        return HttpResponseRedirect(reverse('poems:detail', args=(poemDB.id,)))
+        return HttpResponseRedirect(reverse('poems:detail', args=(djangoPoem.id,)))
 

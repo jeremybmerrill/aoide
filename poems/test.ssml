@@ -1,0 +1,29 @@
+<xml version="1.0">
+<speak xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:dc="http://purl.org/dc/elements/1.1/"
+       version="1.0">
+ 
+  <p>
+    <s xml:lang="en-US">
+      <voice name="David" gender="male" age="25">
+        <prosody rate="x-slow" contour="(0%,+20Hz)(10%,+30%)(40%,+10Hz)">
+          which provides that no suit for the <prosody duration="10s">purpose</prosody>
+        </prosody>
+        <prosody rate="x-slow" contour="(0%,+20Hz)(10%,+30%)(40%,+10Hz)">
+          and that the Internal Revenue Service
+        </prosody>
+        <prosody rate="slow" contour="(0%,+20Hz)(10%,+30%)(40%,+10Hz)">
+          The Taxing Power <prosody duration="5s">As</prosody>
+        </prosody>
+        <prosody rate="slow" contour="(0%,+20Hz)(10%,+30%)(40%,+10Hz)">
+          to our knowledge <prosody duration="5s">has</prosody>
+        </prosody>
+        <prosody rate="x-slow" contour="(0%,+20Hz)(10%,+30%)(40%,+10Hz)">
+          Is not the power to compel <prosody duration="5s">purchase</prosody>
+        </prosody>
+      </voice>
+    </s>
+  </p>
+</speak>
+
+</speak>

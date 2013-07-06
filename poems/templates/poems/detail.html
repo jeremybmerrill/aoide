@@ -1,4 +1,17 @@
-<h1>A {{ poem.format_name }} from {{ poem.source.title }}</h1>
+{% extends "base.html" %}
+
+{% block title %}{{ poem.format_name }}{% endblock %}
+
+{% block content %}
+
+<h1>A {{ poem.format_name }} 
+  {% if poem.source.title %}
+  from {{ poem.source.title }}
+  {% endif %}
+</h1>
 <p>
+  {% autoescape off %}
   {{ poem }}
+  {% endautoescape %}
 </p>
+{% endblock %}

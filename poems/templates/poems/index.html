@@ -1,6 +1,6 @@
+{% extends "base.html" %}
 
-
-
+{% block title %}DIY Poems{% endblock %}
 
 <!-- 
 
@@ -13,6 +13,7 @@ bottom left: top rated poems this week
 bottom right: newly-created poems
 
 -->
+{% block content %}
 <div id="center" style="height:400px">
   DIY
 </div>
@@ -21,7 +22,7 @@ bottom right: newly-created poems
   {% if latest_poems_list %}
       <ul>
       {% for poem in latest_poems_list %}
-          <li><a href="{% url 'detail' poem.id %}">{{ poem }}</a></li>
+          <li><a href="{% url 'poems:detail' poem_id=poem.id %}">{{ poem }}</a></li>
       {% endfor %}
       </ul>
   {% else %}
@@ -32,12 +33,14 @@ bottom right: newly-created poems
   {% if best_poems_list %}
       <ul>
       {% for poem in best_poems_list %}
-          <li><a href="{% url 'detail' poem.id %}">{{ poem }}</a></li>
+          <li><a href="{% url 'poems:detail' poem_id=poem.id %}">{{ poem }}</a></li>
       {% endfor %}
       </ul>
   {% else %}
       <p>No awesome poems :(</p>
   {% endif %}
+
+{% endblock %}
 
 </div>
 

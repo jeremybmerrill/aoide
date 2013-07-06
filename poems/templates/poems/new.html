@@ -1,5 +1,8 @@
-<!-- eventually this oughta be a "partial" or whatever it's called in Djangoland -->
+{% extends "base.html" %}
 
+{% block title %}New Poem{% endblock %}
+
+{% block content %}
 <h1>New Poem</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -25,3 +28,4 @@
   1. give boxes to choose source, format
   2. "approval page" with button to "show it, poet" or not
   3. share page -->
+{% endblock %}

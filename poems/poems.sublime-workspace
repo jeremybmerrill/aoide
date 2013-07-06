@@ -1,0 +1,1432 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"syll_count",
+				"syll_count_token"
+			],
+			[
+				"syll",
+				"syllable_count"
+			],
+			[
+				"after",
+				"after_siblings"
+			],
+			[
+				"rhym",
+				"rhyme_element"
+			],
+			[
+				"this",
+				"this_sylls_lines"
+			],
+			[
+				"split",
+				"split_lines"
+			],
+			[
+				"new",
+				"new_splits"
+			],
+			[
+				"allow",
+				"allow_partial_lines"
+			],
+			[
+				"where",
+				"where_to_put_partial_lines"
+			],
+			[
+				"all",
+				"allow_partial_lines"
+			],
+			[
+				"rhyme",
+				"rhyme_dict"
+			],
+			[
+				"need",
+				"needed_syllable_count"
+			],
+			[
+				"candiate",
+				"candidate_lines"
+			],
+			[
+				"min",
+				"min_length"
+			],
+			[
+				"poe",
+				"poem_format"
+			],
+			[
+				"arra",
+				"array_of_arrays_of_phonemes"
+			],
+			[
+				"hist",
+				"hist_item"
+			],
+			[
+				"his",
+				"histogram_lines"
+			],
+			[
+				"spl",
+				"split_items"
+			],
+			[
+				"primary",
+				"primary_stress"
+			],
+			[
+				"stres",
+				"stresses"
+			],
+			[
+				"phone",
+				"phoneme"
+			],
+			[
+				"phon",
+				"phonemes_array"
+			],
+			[
+				"my",
+				"my_splits"
+			],
+			[
+				"syllable",
+				"syllable_count_token"
+			],
+			[
+				"uniq",
+				"unique_syllable_length"
+			],
+			[
+				"unique_",
+				"unique_syllable_structure"
+			],
+			[
+				"revers",
+				"reversable_phonemes"
+			],
+			[
+				"next",
+				"next_line"
+			],
+			[
+				"syllable_",
+				"syllable_structure"
+			],
+			[
+				"pot",
+				"potential_poem"
+			],
+			[
+				"syllab",
+				"syllable_count"
+			],
+			[
+				"_nu",
+				"_nucleus_end"
+			],
+			[
+				"sylla",
+				"syllabifications"
+			],
+			[
+				"test",
+				"test_stuff"
+			],
+			[
+				"_nucl",
+				"_nucleus_end"
+			],
+			[
+				"nuc",
+				"_nucleus_start"
+			],
+			[
+				"Rhy",
+				"RhymeChecker"
+			],
+			[
+				"conso",
+				"consonants_to_pop"
+			],
+			[
+				"conson",
+				"consonants_to_pop"
+			],
+			[
+				"cons",
+				"consonants_onset_candidates"
+			],
+			[
+				"is",
+				"is_a_vowel"
+			],
+			[
+				"pronu",
+				"pronunciations"
+			],
+			[
+				"onset",
+				"onset_location"
+			],
+			[
+				"pron",
+				"pronunciations"
+			],
+			[
+				"word_",
+				"word_and_pronunciation"
+			],
+			[
+				"Rhym",
+				"RhymeChecker2"
+			],
+			[
+				"class",
+				"classmethod"
+			],
+			[
+				"__",
+				"__init__"
+			],
+			[
+				"syl",
+				"syllable_count"
+			],
+			[
+				"word2",
+				"word2_last_syllable"
+			],
+			[
+				"word",
+				"word1_coda"
+			],
+			[
+				"word1",
+				"word1_rime"
+			],
+			[
+				"line",
+				"lines_needed"
+			],
+			[
+				"lines",
+				"lines_needed"
+			],
+			[
+				"clust",
+				"clusterer"
+			],
+			[
+				"last",
+				"last_word"
+			],
+			[
+				"already",
+				"already_printed"
+			],
+			[
+				"has",
+				"has_poem"
+			],
+			[
+				"rhy",
+				"rhymechecker"
+			],
+			[
+				"poem",
+				"poem_index"
+			],
+			[
+				"ass",
+				"assign_to_poem"
+			],
+			[
+				"split_",
+				"split_line"
+			],
+			[
+				"split_line",
+				"split_line_at_syllable_count"
+			],
+			[
+				"words",
+				"words_to_compare_to"
+			],
+			[
+				"Rym",
+				"RhymeChecker"
+			],
+			[
+				"Rhyme",
+				"RhymeChecker"
+			],
+			[
+				"valid",
+				"validate_syllables"
+			],
+			[
+				"format",
+				"format_name"
+			],
+			[
+				"validate",
+				"validate_okay"
+			],
+			[
+				"lin",
+				"line_syllable_count"
+			],
+			[
+				"clean",
+				"clean_poem"
+			],
+			[
+				"ind",
+				"indices_to_rhyme_with"
+			],
+			[
+				"okay",
+				"okayness"
+			],
+			[
+				"rhymes",
+				"rhymes_with"
+			],
+			[
+				"dirty",
+				"dirty_last_word"
+			],
+			[
+				"dump",
+				"dump_rhyme_cache"
+			],
+			[
+				"pr",
+				"print"
+			],
+			[
+				"document",
+				"document_path"
+			],
+			[
+				"text",
+				"text_path"
+			],
+			[
+				"file",
+				"filesizes"
+			],
+			[
+				"side-e",
+				"side-effectily"
+			],
+			[
+				"docu",
+				"document_tfidf_vectors"
+			],
+			[
+				"files",
+				"filenames_to_tfidf_vectors"
+			],
+			[
+				"tf",
+				"tfidfs_by_document"
+			],
+			[
+				"tfi",
+				"tfidfs_by_document"
+			],
+			[
+				"habe",
+				"habeas_docs"
+			],
+			[
+				"haba",
+				"habeas_docs"
+			],
+			[
+				"marg",
+				"marginaliorum"
+			],
+			[
+				"mouse",
+				"mouseovered_marginalium"
+			],
+			[
+				"margin",
+				"marginalium-expander"
+			],
+			[
+				"ne",
+				"new_height"
+			],
+			[
+				"scale",
+				"scale_factor"
+			],
+			[
+				"sca",
+				"scale_factor"
+			],
+			[
+				"margi",
+				"marginalium"
+			],
+			[
+				"pertai",
+				"pertains_to"
+			],
+			[
+				"left",
+				"left_offset"
+			],
+			[
+				"perta",
+				"pertains_to"
+			],
+			[
+				"pert",
+				"pertains_to"
+			],
+			[
+				"horiz",
+				"horizontal_arrow_control_line"
+			],
+			[
+				"verti",
+				"vertical_arrow_control_line"
+			],
+			[
+				"target",
+				"target_coordinates"
+			],
+			[
+				"ar",
+				"article_bottom"
+			],
+			[
+				"targ",
+				"target_el"
+			],
+			[
+				"curve",
+				"curve_string"
+			],
+			[
+				"opinion",
+				"opinion_line"
+			],
+			[
+				"topic",
+				"topic_words"
+			],
+			[
+				"side",
+				"side-effectily"
+			],
+			[
+				"tfid",
+				"tfidfs_by_document"
+			],
+			[
+				"Side-",
+				"side-effectily"
+			],
+			[
+				"rep",
+				"report_and_row"
+			],
+			[
+				"row",
+				"row_html_class"
+			],
+			[
+				"retur",
+				"returned_stuff"
+			],
+			[
+				"col",
+				"col_headers"
+			],
+			[
+				"revis",
+				"revisions_view"
+			],
+			[
+				"no",
+				"no_payments"
+			],
+			[
+				"repor",
+				"reportable"
+			],
+			[
+				"weight",
+				"very_shallow_parse_weight"
+			],
+			[
+				"two",
+				"word_two_back"
+			],
+			[
+				"paragraph",
+				"paragraph_length"
+			],
+			[
+				"parag",
+				"paragraph_length"
+			],
+			[
+				"max",
+				"max_word_score"
+			],
+			[
+				"very",
+				"very_shallow_parse_weight"
+			],
+			[
+				"topicali",
+				"topicality_weight"
+			],
+			[
+				"word_t",
+				"word_two_back"
+			],
+			[
+				"simi",
+				"similar_words"
+			],
+			[
+				"siml",
+				"similar_words"
+			],
+			[
+				"lambda",
+				"lambdaFunc"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "poemifier.py",
+			"settings":
+			{
+				"buffer_size": 19748,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "SCALIA.txt",
+			"settings":
+			{
+				"buffer_size": 118074,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "syllable_count_guesser.py",
+			"settings":
+			{
+				"buffer_size": 3932,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "line.py",
+			"settings":
+			{
+				"buffer_size": 8343,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 382,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "web.py",
+			"settings":
+			{
+				"buffer_size": 577,
+				"line_ending": "Unix",
+				"name": "from flask import Flask"
+			}
+		},
+		{
+			"file": "/home/merrillj/code/poemsweb/poems/models.py",
+			"settings":
+			{
+				"buffer_size": 585,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/merrillj/code/poemsweb/poemsweb/settings.py",
+			"settings":
+			{
+				"buffer_size": 5402,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "poem.py",
+			"settings":
+			{
+				"buffer_size": 4484,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/merrillj/code/poemsweb/poemsweb/urls.py",
+			"settings":
+			{
+				"buffer_size": 556,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/merrillj/code/poemsweb/poems/admin.py",
+			"settings":
+			{
+				"buffer_size": 90,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 348.0,
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/merrillj/code/showem-a-poem/poem.py",
+		"/home/merrillj/code/poemsweb/poems/settings.py",
+		"/home/merrillj/code/poemsweb/manage.py",
+		"/home/merrillj/code/poemsweb/poemsweb/settings.py",
+		"/home/merrillj/.config/sublime-text-2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+		"/home/merrillj/boundless.pdf",
+		"/home/merrillj/.purple/certificates/x509/tls_peers/jabber.ccc.de",
+		"/home/merrillj/code/heartbeat.rb",
+		"/home/merrillj/code/heartbeat.py",
+		"/home/merrillj/code/showem-a-poem/installmentloansextras.txt",
+		"/home/merrillj/code/zigbee/xbee/XBee-2.1.0/README.txt",
+		"/home/merrillj/code/zigbee/test.py",
+		"/home/merrillj/Downloads/XBee-2.1.0/README.txt",
+		"/home/merrillj/Documents/JBM dot com/resume.php",
+		"/home/merrillj/budget.csv",
+		"/home/merrillj/code/showem-a-poem/installmentloans.txt",
+		"/home/merrillj/code/showem-a-poem/scaliaextras.txt",
+		"/home/merrillj/code/showem-a-poem/test.ssml",
+		"/home/merrillj/code/showem-a-poem/rhymechecker.py",
+		"/home/merrillj/code/showem-a-poem/rhymetime.py",
+		"/home/merrillj/code/showem-a-poem/lib/cmudict/cmudict.0.7a",
+		"/home/merrillj/code/scraperotus/indices/05pdf.html",
+		"/home/merrillj/code/scraperotus/DownloadOpinions.py",
+		"/home/merrillj/code/scraperotus/LICENSE",
+		"/home/merrillj/code/showem-a-poem/syllable_count_guesser.py",
+		"/home/merrillj/code/showem-a-poem/poemifier.py",
+		"/home/merrillj/code/scotuslm/poemifier.py",
+		"/home/merrillj/code/scotuslm/rhymechecker-cmu.py",
+		"/home/merrillj/code/scotuslm/rhymechecker.py",
+		"/home/merrillj/code/scotuslm/lib/cmudict/cmudict.0.7a.symbols",
+		"/home/merrillj/code/scotuslm/lib/cmudict/cmudict.0.7a.phones",
+		"/home/merrillj/code/scotuslm/syllable_count_guesser.py",
+		"/home/merrillj/code/scotuslm/syllabizer.py",
+		"/home/merrillj/code/scotuslm/lib/cmudict/cmudict.0.7a",
+		"/home/merrillj/wc",
+		"/home/merrillj/grease.txt",
+		"/home/merrillj/code/scotuslm/TopicSimilarity.py",
+		"/home/merrillj/code/scotuslm/poemvalidator.py",
+		"/home/merrillj/code/scotuslm/opinionifier.rb",
+		"/home/merrillj/code/marginalis/demo.html",
+		"/home/merrillj/code/marginalis/marginalis.js",
+		"/home/merrillj/code/scotuslm/README.md",
+		"/home/merrillj/code/scotuslm/SentenceGenerator.py",
+		"/home/merrillj/code/scotuslm/LanguageModel.py",
+		"/home/merrillj/code/scotuslm/sotu.txt",
+		"/home/merrillj/code/scotuslm/opinions/11txt/National Federation of Independent Business v. Sebelius/SCALIA.txt",
+		"/home/merrillj/Downloads/prebuilt_aspx_2012-Expenditures-to-Healthcare-Professionals.aspx.xls",
+		"/home/merrillj/code/playinghooky/lib/tasks/import.rake",
+		"/home/merrillj/code/scotuslm/opinions/11txt/American Tradition Partnership, Inc. v. Bullock/per curiam.txt",
+		"/home/merrillj/Downloads/CDIC_Sept2012.txt",
+		"/home/merrillj/propublica/frackman/java/src/propub/pdf/PDFRipper.java",
+		"/home/merrillj/propublica/frackman/java/src/propub/pdf/innards/BaseFormatter.java",
+		"/home/merrillj/propublica/frackman/java/src/propub/pdf/innards/Base",
+		"/home/merrillj/propublica/frackman/java/src/propub/pdf/innards/ColumnBreak.java",
+		"/home/merrillj/code/scotuslm/opinions/11txt/National Federation of Independent Business v. Sebelius/syllabus.raw.txt",
+		"/usr/local/lib/python2.7/dist-packages/hcluster/hierarchy.py",
+		"/home/merrillj/code/scotuslm/opinions/10txt/Brown v. Plata/SCALIA.raw.txt",
+		"/home/merrillj/code/scotuslm/lm.rb",
+		"/home/merrillj/code/scotuslm/lib/lineCombiner/lineCombiner.rb",
+		"/home/merrillj/Documents/isrpalconflict",
+		"/home/merrillj/marginalis/marginalis.js",
+		"/home/merrillj/marginalis/README.md",
+		"/home/merrillj/marginalis/README",
+		"/home/merrillj/marginalis/LICENSE",
+		"/home/merrillj/marginaliorum/demo.html",
+		"/home/merrillj/marginalis/marginalis.css",
+		"/home/merrillj/marginaliorum/marginaliorum.js",
+		"/home/merrillj/marginaliorum/marginaliorum.css",
+		"/home/merrillj/marginaliorum/README",
+		"/home/merrillj/marginaliorum/test.html",
+		"/var/log/syslog",
+		"/home/merrillj/Documents/JBM dot com/cps_articles_backup_for_clips/nc_irv_article.txt",
+		"/home/merrillj/Documents/My Old Documents/College and Class Materials/Extracurriculars/Port Side/backup7_27_2011/portside.sql",
+		"/home/merrillj/scotuslm/opinions/08txt/Walker v. Georgia/per curiam.raw.txt",
+		"/home/merrillj/scotuslm/textifier.rb",
+		"/home/merrillj/scotuslm/opinions/11txt/Lafler v. Cooper/SCALIA.raw.txt",
+		"/home/merrillj/scotuslm/opinions/11txt/Lafler v. Cooper/SCALIA.txt",
+		"/home/merrillj/scotuslm/opinionifier.rb",
+		"/home/merrillj/scotuslm/DownloadOpinions.py",
+		"/home/merrillj/scotuslm/malttest.py",
+		"/home/merrillj/scotuslm/scotus.py",
+		"/home/merrillj/Desktop/capitalism",
+		"/home/merrillj/naiveconlang/README",
+		"/home/merrillj/.cache/.fr-PwxEHf/Tether/node-tuntap/tuntap.js",
+		"/home/merrillj/.cache/.fr-PCljKd/Tether/README",
+		"/home/merrillj/Documents/JBM dot com/index.php",
+		"/home/merrillj/propublica/bailoutgit/app/controllers/admin/uploads_controller.rb",
+		"/home/merrillj/propublica/bailoutgit/app/models/upload.rb",
+		"/home/merrillj/Downloads/DataTables-1.9.4/Readme.txt",
+		"/home/merrillj/propublica/bailoutgit/app/views/layouts/admin.html.erb",
+		"/home/merrillj/scotuslm/TopicSimilarity.py",
+		"/home/merrillj/scotuslm/LanguageModel.py",
+		"/home/merrillj/scotuslm/SentenceGenerator.py",
+		"/home/merrillj/scotuslm/README.md",
+		"/home/merrillj/scotuslm/LICENSE",
+		"/home/merrillj/propublica/bailoutgit/lib/seeds/dividend-data/2012-07-31.txt",
+		"/home/merrillj/propublica/bailoutgit/app/controllers/admin/base_controller.rb",
+		"/home/merrillj/propublica/bailoutgit/lib/tasks/dividends.rake",
+		"/home/merrillj/propublica/bailoutgit/config/routes.rb",
+		"/home/merrillj/propublica/bailoutgit/public/javascripts/uploader.js",
+		"/home/merrillj/propublica/bailoutgit/app/templates/uploader.jst",
+		"/home/merrillj/propublica/bailoutgit/app/views/admin/uploads/uploader.erb",
+		"/home/merrillj/propublica/bailoutgit/app/models/event.rb",
+		"/home/merrillj/propublica/bailoutgit/app/controllers/initiatives_controller.rb",
+		"/home/merrillj/Dropbox/NYT/photos.js",
+		"/home/merrillj/propublica/bailoutgit/config/environment.rb",
+		"/home/merrillj/propublica/bailoutgit/public/javascripts/uploader.jst",
+		"/home/merrillj/propublica/bailoutgit/public/javascripts/jquery-ui.js",
+		"/home/merrillj/propublica/bailoutgit/public/javascripts/application.js",
+		"/home/merrillj/propublica/bailoutgit/config/environments/development.rb",
+		"/home/merrillj/Dropbox/NYT/oneup.jst",
+		"/home/merrillj/propublica/bailoutgit/app/controllers/admin/events_controller.rb",
+		"/home/merrillj/propublica/bailoutgit/app/controllers/sessions_controller.rb",
+		"/home/merrillj/propublica/bailoutgit/app/models/user.rb",
+		"/home/merrillj/propublica/bailoutgit/config/database.yml",
+		"/home/merrillj/nltk_data/grammars/large_grammars/alvey.fcfg",
+		"/home/merrillj/nltk_data/grammars/large_grammars/atis.cfg",
+		"/home/merrillj/nltk_data/grammars/large_grammars/atis_sentences.txt",
+		"/home/merrillj/scotuslm/Untitled Document",
+		"/home/merrillj/scotuslm/opinions/09txt/Free Enterprise Fund v. Public Company Accounting Oversight Bd./the Court.txt",
+		"/home/merrillj/scotuslm/opinions/09txt/Hui v. Castaneda/the Court.txt",
+		"/home/merrillj/scotuslm/txts/11txt/Arizona v. United States/Arizona v. United States_017.txt",
+		"/home/merrillj/scotuslm/txts/11txt/Arizona v. United States/Arizona v. United States_002.txt",
+		"/home/merrillj/scotuslm/TopicSimilarityDump.dat",
+		"/home/merrillj/scotuslm/lm.rb",
+		"/home/merrillj/Programs/capitalismuploader.sh",
+		"/home/merrillj/Desktop/notes",
+		"/home/merrillj/scotuslm/opinions/11txt/Martinez v. Ryan/SCALIA.txt"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/home/merrillj/code/scotuslm",
+			"/home/merrillj/marginalis",
+			"/home/merrillj/scotuslm,-*.txt,-*.pdf",
+			"/home/merrillj/scotuslm,-*.txt",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Poll",
+			"polls",
+			"poems",
+			"poemsweb",
+			"poems",
+			"poemsweb",
+			"asdf",
+			"allow_partial",
+			"todo",
+			"\n  def format_poem(lines):\n    return \"\\n\".join(lines)\n",
+			"  def format_poem(lines):\n    return \"\\n\".join(lines)\n",
+			"wrong",
+			"add_line",
+			"_group_lines_by_rime",
+			"      print \"6: \" + str(groups.get(6, \"\"))\n",
+			"random",
+			"isinstance",
+			"TODO",
+			"money",
+			"_prune_too_small_grouped_lines",
+			"_group_lines_by_rime",
+			"UW",
+			"_group_lines_by_rime",
+			"split",
+			"failed on rhyme",
+			"line",
+			"        # print \"after: \" + str(len(groups.get(5, \"\")))\n        # print \"after: \" + str(len(groups.get(7, \"\")))\n        # print \"\"\n",
+			"\\. ",
+			". ",
+			"\\n\\n",
+			"],",
+			"sibling",
+			"puts",
+			"print",
+			"asdf",
+			"print",
+			"'",
+			"line",
+			"next_splitzies",
+			"new_splits",
+			"\n    ",
+			"resp",
+			"_split_line_at_syllable_count_helper_helper",
+			"split_line_at_syllable_count",
+			"_split_line_at_syllable_count_helper",
+			"where_to_put",
+			"where_to_put_partial_lines",
+			"_prune_desiblinged_lines_from_groups",
+			"_cull_desiblinged_lines_from_poems",
+			"one",
+			"none",
+			"_group_lines_by_rime",
+			"rhyme_dict",
+			"add_line",
+			"_group_lines_by_rime",
+			"line",
+			"rime()",
+			"syllable_count",
+			"syll_count_token",
+			"tuple",
+			"type",
+			"type(",
+			"syllable_count(",
+			"syllable_count",
+			"if not self.",
+			"_prune_desiblinged_lines_from_groups",
+			"_prune_too_small_grouped_lines",
+			"print",
+			"poems",
+			"random",
+			"rhyme_scheme",
+			"_pair_rhyme_lines",
+			"inner_split",
+			"splits",
+			"split",
+			"sys",
+			"json",
+			"pickle",
+			"urllib",
+			"TODO",
+			"\"",
+			"snarkified_tweet",
+			"snarkify",
+			"todo",
+			"random",
+			"randint",
+			"be_random",
+			"beRandom",
+			"possible_lines",
+			"this_sylls_lines",
+			"random",
+			"todo",
+			"get_rime",
+			"min_length",
+			"my_list",
+			"get_rime",
+			"todo",
+			"False",
+			"syllabification",
+			"get_rime",
+			"self.get_rime",
+			"self.pronunciations",
+			"syllabify_pron",
+			"self.syllabify_pron",
+			"array_of_arrays_of_phonemes.append(",
+			"print",
+			"array_of_phonemes_stress",
+			"getPhonemes",
+			"phonemes",
+			".syllables",
+			"stress",
+			"todo",
+			"'",
+			">\n",
+			"image_handle",
+			"is_red",
+			"trim",
+			"histogram_split",
+			"center",
+			"Center",
+			"@",
+			"url.split(\"/\")[-2]",
+			"print",
+			"primary_stress",
+			"print",
+			".phonemes",
+			"phonemes",
+			"rhyme_dict"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			".\\n",
+			"\\n",
+			"count_syllables",
+			"self.",
+			"\\n",
+			"?\\n",
+			"\\n",
+			"\\n\\n",
+			"\\n",
+			"",
+			"\\n\\n",
+			"\\n",
+			"\\n\\n",
+			"\\n",
+			"\\1",
+			"",
+			"\\n\\n",
+			"]\\n\\n[",
+			"\\n",
+			"if self.debug",
+			")\\n",
+			"",
+			")\\n",
+			")\\n\\1",
+			")\\n\\\\1",
+			")\\n$1",
+			"",
+			") ==",
+			") == ",
+			"\\n>>> s.syllabize(",
+			"\\ns.syllabize(",
+			"</p>\\n\\n<p>",
+			"marginalis",
+			"get_next_word",
+			"self.def",
+			"print($1)",
+			"elif",
+			"40",
+			"next_word_choices",
+			"get",
+			"not",
+			"print",
+			"None",
+			"False",
+			"True",
+			"\"label\"",
+			"\"data\"",
+			"\"tokencount\"",
+			"dict()",
+			"",
+			"\"",
+			"page_number",
+			"ordered_pages",
+			"year_folders",
+			"is_footnotes",
+			"is_syllabus",
+			"next_line",
+			"opinion_filepath",
+			"format_all_opinions",
+			"raw_opinion_filepath",
+			"case_folder",
+			"previous_justice",
+			"order_of_justices",
+			"end_of_majority_opinion_pages",
+			"new_number",
+			"new_opinion",
+			"safe_to_combine",
+			"rest_of_next_line",
+			"new_page_combined",
+			"new_page",
+			"is_beginning_of_opinion",
+			"is_beginning",
+			"opinion_name",
+			"case_line",
+			"underscore_line",
+			"scotus_line",
+			"opinion_line",
+			"line_combiner",
+			"format_opinion",
+			"sentence_so_far",
+			"check_verbs_and_complementizers",
+			"inner_hash",
+			"trigram_counts_two_steps_inside",
+			"trigram_counts_one_step_inside",
+			"use_linkparser_to_validate_sentences",
+			"so_far",
+			"get_phrase",
+			"most_recent_world",
+			"next_word",
+			"next_word_choices_stuff",
+			"next_word_trigrams",
+			"next_word_bigrams",
+			"trigram_LM_two_steps_inside",
+			"trigram_LM_one_step_inside",
+			"trigram_two_steps_inside",
+			"trigram_one_step_inside",
+			"word_two_back",
+			"word_back",
+			"bigram_inner_dict",
+			"split_sentence",
+			"@word_count",
+			"trigram_counts_member",
+			"bigram_counts",
+			"bigram_counts_member",
+			"unigram_counts",
+			"trigram_counts",
+			"useEngtagger",
+			"engtagger",
+			"last_word_POS",
+			"last_word_tag_stuff",
+			"tagged_sentence_with_next_word",
+			"tagged_sentence",
+			"@engtagger",
+			"checkVerbsAndComplementizers",
+			"@complementizer_count",
+			"@verb_count",
+			"trim",
+			"include?(",
+			"@subtrie",
+			"  ",
+			"@wordcount",
+			"",
+			"@bigramlm",
+			"@trigramlm",
+			"bigramcounts",
+			"unigramcounts",
+			"unigramCounts",
+			"unigramcounts"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "poemifier.py",
+					"settings":
+					{
+						"buffer_size": 19748,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14502,
+								14502
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4440.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "SCALIA.txt",
+					"settings":
+					{
+						"buffer_size": 118074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21042,
+								21042
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 829.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "syllable_count_guesser.py",
+					"settings":
+					{
+						"buffer_size": 3932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								42,
+								42
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "line.py",
+					"settings":
+					{
+						"buffer_size": 8343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								611,
+								611
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2422.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "README.md",
+					"settings":
+					{
+						"buffer_size": 382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								327,
+								327
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "web.py",
+					"settings":
+					{
+						"buffer_size": 577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								462,
+								462
+							]
+						],
+						"settings":
+						{
+							"auto_name": "from flask import Flask",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/merrillj/code/poemsweb/poems/models.py",
+					"settings":
+					{
+						"buffer_size": 585,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								340,
+								340
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/merrillj/code/poemsweb/poemsweb/settings.py",
+					"settings":
+					{
+						"buffer_size": 5402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4436,
+								4436
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1414.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "poem.py",
+					"settings":
+					{
+						"buffer_size": 4484,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								252,
+								252
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1136.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/home/merrillj/code/poemsweb/poemsweb/urls.py",
+					"settings":
+					{
+						"buffer_size": 556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								160,
+								160
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/home/merrillj/code/poemsweb/poems/admin.py",
+					"settings":
+					{
+						"buffer_size": 90,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 220.0,
+	"status_bar_visible": true
+}
