@@ -1,9 +1,16 @@
 # Create your views here.
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.core.urlresolvers import reverse
 
 from poems.models import Poem, Source
+import poemformat
+from poemifier import Poemifier
+from line import Line
 
+import datetime
+import nltk.tokenize.punkt
 
 def index(request):
     latest_poems_list = Poem.objects.order_by('-gen_date')[:5]
@@ -20,7 +27,7 @@ def detail(request, poem_id):
     return render(request, 'poems/detail.html', {'poem': poem})
 
 def new(request):
-    return render(request, 'poems/new.html')
+    return render(request, 'poems/new.html', {'format_names': [c.__name__ for c in poemformat.PoemFormat.__subclasses__()]} )
 
 def snap(request, poem_id): #or roll eyes / sigh loudly
     poem = get_object_or_404(Poem, pk=poem_id)
@@ -38,19 +45,15 @@ def snap(request, poem_id): #or roll eyes / sigh loudly
     # user hits the Back button.
     return HttpResponseRedirect(reverse('poems:detail', args=(poem.id,)))
 
-def create(request, poll_id):
-    poem = get_object_or_404(Poem, pk=poem_id)
+def create(request):
     try:
-        source_url = request.POST['source_url']
-        format_name = request.POST['format_name']
-        source_text = "asdfasdf #TODO"
+        source_url = request.POST['sourceUrl']
+        format_name = request.POST['formatName']
+        source_text = request.POST['content']
         #eventually test this for stuff
     except (KeyError):
         # Redisplay the poll voting form.
-        return render(request, 'polls/detail.html', {
-            'poll': p,
-            'error_message': "You didn't select a choice.",
-        })
+        return "error"
     else:
         # UI: 
         #  1. give boxes to choose source, format
@@ -59,7 +62,8 @@ def create(request, poll_id):
         sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
         linetexts = sent_detector.tokenize(source_text)
 
-        p = Poemifier(format_name.capitalize())
+        poemFormatClass = getattr( poemformat, format_name )()
+        p = Poemifier( poemFormatClass )
         #this can't be a do... while, because we have to add all the lines, then do various processing steps.
         for linetext in linetexts:
           line = Line(linetext, p.rhyme_checker)
@@ -67,12 +71,16 @@ def create(request, poll_id):
             continue
           #p.try_line(line) #too slow
           p.add_line(line)
-        poem_text = poem.format_poem( p.create_poem(True) )
-
+        poemDB = Poem()
+        poem_text = poemFormatClass.format_poem(  p.create_poem(True) )
+        poemDB.text = poem_text
+        poemDB.format_name = format_name
+        poemDB.gen_date = datetime.datetime.now()
+        poemDB.save()
         #TODO
 
           # Always return an HttpResponseRedirect after successfully dealing
           # with POST data. This prevents data from being posted twice if a
           # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+        return HttpResponseRedirect(reverse('poems:detail', args=(poemDB.id,)))
 

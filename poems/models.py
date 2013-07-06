@@ -10,7 +10,7 @@ class Source(models.Model):
       return self.title
 
 class Poem(models.Model):
-    source = models.ForeignKey(Source)
+    source = models.ForeignKey(Source, blank=True, null=True)
     text = models.TextField('poem text')
     format_name = models.CharField('poem type', max_length=30)
     up_votes = models.IntegerField(default=0)

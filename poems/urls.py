@@ -10,8 +10,11 @@ urlpatterns = patterns('',
     url(r'^(?P<poem_id>\d+)/$', views.detail, name='detail'),
 
     # ex: /poems/5/vote/
-    url(r'^(?P<poem_id>\d+)/vote/$', views.vote, name='vote'),
+    url(r'^(?P<poem_id>\d+)/vote/$', views.snap, name='vote'),
 
-    # ex: /poems/5/create/ #heh, POST, eventually
-    url(r'^(?P<poem_id>\d+)/create/$', views.create, name='create'),
+    # ex: /poems/create/ #heh, POST, eventually
+    url(r'^new/$', views.new, name='new'),
+
+    # ex: /poems/create/ #heh, POST, eventually
+    url(r'^create/$', views.create, name='create'),
 )
