@@ -25,12 +25,12 @@ class RhymeChecker:
     self.syllabifications = {}
     self.syllable_count_guesser = SyllableCountGuesser()
     #self.consonants = [] #unimplemented
-    for line in open(os.path.abspath(os.path.join("./poems/lib/cmudict/cmudict.0.7a.phones")) ,"r"):
+    for line in open(os.path.abspath(os.path.join(os.path.dirname(__file__), "./lib/cmudict/cmudict.0.7a.phones")) ,"r"):
       symbol, manner = line.strip().split("\t")
       if manner == "vowel":
         RhymeChecker.vowels.append(symbol)
       self.symbols[symbol] = manner
-    for index, line in enumerate(open(os.path.abspath(os.path.join("./poems/lib/cmudict/cmudict.0.7a")), "r")):
+    for index, line in enumerate(open(os.path.abspath(os.path.join(os.path.dirname(__file__), "./lib/cmudict/cmudict.0.7a")), "r")):
       if line.strip()[0] in [";", "#"]:
         continue
       # if index % 1000 == 0 and index > 0:

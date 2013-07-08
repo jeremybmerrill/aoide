@@ -9,15 +9,26 @@
 
 <form action="{% url 'poems:create' %}" method="post">
 {% csrf_token %}
-<textarea name="content" rows="10" cols="30">
- Paste source content here.
+<textarea name="content" placeholder="Paste source text here" rows="10" cols="30">
+  {% if given_source_text %}
+    {{given_source_text}}
+  {% endif %} 
+
 </textarea>
 <br />
-<input type="url" name="sourceUrl" />
+<input type="url" name="sourceUrl" 
+  {% if given_source_url %}
+    value={{given_source_url}}
+  {% endif %} 
+ />
 <label for="sourceUrl">URL to source text</label></br>
 
 {% for format_name in format_names %}
-    <input type="radio" name="formatName" id="formatName{{ forloop.counter }}" value="{{ format_name }}" />
+    <input type="radio" name="formatName" id="formatName{{ forloop.counter }}" value="{{ format_name }}" 
+    {% if given_format_name and given_format_name == format_name %}
+      checked
+    {% endif %}
+    />
     <label for="formatName{{ forloop.counter }}">{{ format_name|capfirst }}</label><br />
 {% endfor %}
 

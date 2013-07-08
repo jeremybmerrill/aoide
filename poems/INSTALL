@@ -1,0 +1,6 @@
+python
+jpype (crazy shit, needs jdk)
+python-boilerpipe
+set JAVA_HOME
+
+also needs nltk, some downloaded stuff

@@ -357,8 +357,10 @@ class Poemifier:
     #   print "generated " + str(len(poems)) + " semivalid poems"
     #   poems = self._cull_desiblinged_lines_from_poems(poems)
     #print "generated " + str(len(poems)) + " valid poems"
-
-    return poem
+    if None in poem:
+      return False
+    else:
+      return poem
 
 def _test():
   import doctest
