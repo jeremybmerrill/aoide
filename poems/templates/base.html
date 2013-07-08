@@ -9,7 +9,16 @@
 <body>
   <div id="container">
     <div id="header">
-      <h1>I am a header, eventually</h1>
+      <div id="loginbar">
+        {% if user.is_authenticated %}
+          <a href="#">{{user.username}}</a>
+          <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}">Log in</a>
+        {% endif %}
+      </div>
+      <h1>show 'em a poem</h1>
+
     </div>
     <div id="content">
       {% block content %}{% endblock %}

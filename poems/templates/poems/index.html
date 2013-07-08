@@ -2,6 +2,8 @@
 
 {% block title %}DIY Poems{% endblock %}
 
+{% load poem_extras %}
+
 <!-- 
 
 center top: create your own poem
@@ -14,16 +16,17 @@ bottom right: newly-created poems
 
 -->
 {% block content %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <div id="center" style="">
-  DIY
+  {% include 'poems/_new.html' %}
 </div>
 
 <div id="bottom-left" class="half-width">
-  <h3>Latest Poems</h3>
+  <h3>latest</h3>
   {% if latest_poems_list %}
       <ul>
       {% for poem in latest_poems_list %}
-          <li><a href="{% url 'poems:detail' poem_id=poem.id %}">{{ poem }}</a></li>
+          <li><a href="{% url 'poems:detail' poem_id=poem.id %}">{{ poem.text|truncatefrontpage }}</a></li>
       {% endfor %}
       </ul>
   {% else %}
@@ -31,11 +34,11 @@ bottom right: newly-created poems
   {% endif %}
 </div>
 <div id="bottom-right" class="half-width">
-  <h3>Popular Poems</h3>
+  <h3>popular</h3>
   {% if best_poems_list %}
       <ul>
       {% for poem in best_poems_list %}
-          <li><a href="{% url 'poems:detail' poem_id=poem.id %}">{{ poem }}</a></li>
+          <li><a href="{% url 'poems:detail' poem_id=poem.id %}">{{ poem.text|truncatefrontpage }}</a></li>
       {% endfor %}
       </ul>
   {% else %}
@@ -43,6 +46,6 @@ bottom right: newly-created poems
   {% endif %}
 
 {% endblock %}
-
 </div>
+<div style="clear: both;"></div>
 

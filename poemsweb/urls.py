@@ -12,7 +12,8 @@ urlpatterns = patterns('',
 
     url(r'^$', include('poems.urls')),
     url(r'^poems/', include('poems.urls', namespace="poems")),
-
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="login" ),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/poems/'}, name="logout",),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

@@ -1,27 +1,24 @@
-{% extends "base.html" %}
-
-{% block title %}New Poem{% endblock %}
-
-{% block content %}
-<h1>New Poem</h1>
-
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<h2>make yr own poem</h2>
 
 <form action="{% url 'poems:create' %}" method="post">
 {% csrf_token %}
-<textarea name="content" placeholder="Paste source text here" rows="10" cols="30">
-  {% if given_source_text %}
-    {{given_source_text}}
-  {% endif %} 
-
-</textarea>
-<br />
 <input type="url" name="sourceUrl" 
   {% if given_source_url %}
     value={{given_source_url}}
   {% endif %} 
  />
-<label for="sourceUrl">URL to source text</label></br>
+<label for="sourceUrl">URL to source text</label>
+</br>
+- or - 
+<br />
+{% spaceless %}
+<textarea id="newpoem" name="content" placeholder="Paste source text here" rows="15" cols="80">
+  {% if given_source_text %}
+    {{given_source_text}}
+  {% endif %} 
+</textarea>
+{% endspaceless %}
+<br />
 
 {% for format_name in format_names %}
     <input type="radio" name="formatName" id="formatName{{ forloop.counter }}" value="{{ format_name }}" 
@@ -31,6 +28,7 @@
     />
     <label for="formatName{{ forloop.counter }}">{{ format_name|capfirst }}</label><br />
 {% endfor %}
+<br />
 
 <input type="submit" value="Poemize" />
 </form>
@@ -39,4 +37,3 @@
   1. give boxes to choose source, format
   2. "approval page" with button to "show it, poet" or not
   3. share page -->
-{% endblock %}

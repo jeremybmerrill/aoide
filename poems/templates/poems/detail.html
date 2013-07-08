@@ -9,12 +9,13 @@
   from {{ poem.source.title }}
   {% endif %}
 </h1>
+<h4>by TK/username</h4>
 <p>
   {% autoescape off %}
-  {{ poem }}
+  {{ poem|linebreaks }}
   {% endautoescape %}
 </p>
 
-<a href="{% url 'poems:new'%}">Do it again!</a>
+<a href="{% url 'poems:index'%}">Do it again!</a>
 
 {% endblock %}

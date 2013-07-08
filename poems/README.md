@@ -1,10 +1,16 @@
 A script for generating arbitrary poems from "found" lines in a given input text.
 
-Eventually this'll end up on AWS so you can play with it.
-web:
-stash poems with a permalink.
-if a poem can't be created with only unsplit lines, return one with split lines.
-(maybe via pickle), don't reenter stuff if "another poem" is requested
+save sources 
+  minimizes hammering folks
+  "popular sources" list
+  allows "another poem" button
+  maybe: pickle the giant dicts for source/format combos.
+design
+  two-paned view for URL/source text
+  voting
+users
+  profiles
+generic views (more pythonic!!)
 
 aws thing 
 http://stackoverflow.com/questions/3652657/what-algorithm-does-readability-use-for-extracting-text-from-urls
