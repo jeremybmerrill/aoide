@@ -1,13 +1,12 @@
 A script for generating arbitrary poems from "found" lines in a given input text.
 
-save sources 
-  minimizes hammering folks
   "popular sources" list
-  allows "another poem" button
+  allows easy "another poem" button
   maybe: pickle the giant dicts for source/format combos.
 design
   two-paned view for URL/source text
-  voting
+  voting?
+  put each stanza of longer poems in their own <p>
 users
   profiles
 generic views (more pythonic!!)

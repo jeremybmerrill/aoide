@@ -3,7 +3,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
@@ -40,7 +40,7 @@ def detail(request, poem_id):
 # def new(request):
 #     return render(request, 'poems/new.html', {'format_names': [c.__name__ for c in showemapoem.poemformat.PoemFormat.__subclasses__()]} )
 
-@login_required
+#@login_required
 def snap(request, poem_id): #or roll eyes / sigh loudly
     poem = get_object_or_404(Poem, pk=poem_id)
     vote_polarity = pk=request.POST['polarity']
@@ -59,7 +59,7 @@ def snap(request, poem_id): #or roll eyes / sigh loudly
     # user hits the Back button.
     return HttpResponseRedirect(reverse('poems:detail', args=(poem.id,)))
 
-@login_required
+#@login_required
 def create(request):
     source_url = request.POST['sourceUrl']
     format_name = request.POST['formatName']
@@ -77,12 +77,20 @@ def create(request):
 
         #figure out whether to use source_text or source_url
         if source_url:# and validator(source_url):
-            #TODO: create source object from URL
-            #fail if we've made too many requests to that URL or if we've already gotten that URL
-            html = urllib2.urlopen(source_url).read()
-            extractor = Extractor(extractor='DefaultExtractor', html=html)
-            #TODO: get title from extractor.html
-            source_text = extractor.getText()
+            if (source = Entry.objects.get(address=source_url.split("#")[0]))
+              pass
+            else:
+              #fail if we've made too many requests to that URL or if we've already gotten that URL
+              html = urllib2.urlopen(source_url).read()
+              extractor = Extractor(extractor='DefaultExtractor', html=html)
+              #TODO: get title from extractor.html
+              source_text = extractor.getText()
+              source = Source()
+              source.text = source_text
+              source.created_date = datetime.datetime.now()
+              source.title = urlparse.urlparse(source_url)[1]
+              source.address = source_url.split("#")[0]
+
         elif len(source_text) >= 50:
             title = None
         else:
@@ -112,6 +120,7 @@ def create(request):
               #p.try_line(line) #too slow
               p.add_line(line)
             djangoPoem = Poem()
+            djangoPoem.source = source
             raw_poem = p.create_poem(True)
             if raw_poem:
               break

@@ -9,12 +9,12 @@
   from {{ poem.source.title }}
   {% endif %}
 </h1>
-<h4>by TK/username</h4>
-<p>
+<h4 class="byline">by {{poem.author_name}}</h4>
+<div class="poem-detail {{poem.format_name|lower}}">
   {% autoescape off %}
   {{ poem|linebreaks }}
   {% endautoescape %}
-</p>
+</div>
 
 <a href="{% url 'poems:index'%}">Do it again!</a>
 
