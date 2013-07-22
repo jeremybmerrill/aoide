@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}about | show 'em a poem{% endblock %}
+
+{% block content %}
+
+<h1 id="format-name">A Project</h1>
+
+<h4 id="byline">by <a class="unpurpleable" href="http://jeremybmerrill.com">Jeremy B. Merrill</a></h4>
+
+<div style="clear: both;"></div>
+
+<h4 id="source-title">on <a class="source-link" href="http://github.com/jeremybmerrill/showemapoem">Github</a></h4>
+
+<div class="poem-detail about">
+i made this for fun<br />
+<a href="/algo.html">wait, how does it even work?</a><br />
+i hope you like it<br />
+<br />
+</div>
+
+
+<a class="admonition" href="{% url 'poems:index'%}">make a poem?</a><br />
+
+{% endblock %}

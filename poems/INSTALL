@@ -2,5 +2,7 @@ python
 jpype (crazy shit, needs jdk)
 python-boilerpipe
 set JAVA_HOME
+	in bashrc:
+	export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 
 also needs nltk, some downloaded stuff

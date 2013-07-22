@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
     {% load staticfiles %}
-    <link href="{{ STATIC_URL }}styles.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+
     <link href='http://fonts.googleapis.com/css?family=Lora:400,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500' rel='stylesheet' type='text/css'>
+    <script src="{{ STATIC_URL }}js/jquery-1.10.2.min.js"></script>
+    <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
+    <script src="{{ STATIC_URL }}js/backbone-min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/poems.js"></script>
 
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -22,15 +29,20 @@
         {% endif %}
         {% endcomment %}
       </div>
-      <h1>show 'em a poem</h1>
+      <h1><a class="index unpurpleable" href="{% url 'index' %}">show 'em a poem</a></h1>
 
     </div>
     <div id="content">
       {% block content %}{% endblock %}
     </div>
     <div id="footer">
+      {% comment %}
       {% block footer %}
       {% endblock %}
+      {% endcomment %}
+
+      <a class="unpurpleable" href="{% url 'about' %}">about</a>
+
     </div>
   </div>
 </body>

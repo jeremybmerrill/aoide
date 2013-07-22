@@ -1,36 +1,50 @@
+{% load poem_extras %}
+
 <h2>make yr own poem</h2>
 
 <form action="{% url 'poems:create' %}" method="post">
 {% csrf_token %}
-<input type="url" name="sourceUrl" 
-  {% if given_source_url %}
-    value={{given_source_url}}
-  {% endif %} 
- />
-<label for="sourceUrl">URL to source text</label>
-</br>
-- or - 
-<br />
-{% spaceless %}
-<textarea id="newpoem" name="content" placeholder="Paste source text here" rows="15" cols="80">
-  {% if given_source_text %}
-    {{given_source_text}}
-  {% endif %} 
-</textarea>
-{% endspaceless %}
-<br />
+<ol>
+  <li>
+    source text:
+    <div id="source-url">
+      <label for="sourceUrl">URL&nbsp;</label>
+      <input type="url" name="sourceUrl" id="source-url-input"
+        {% if given_source_url %}
+          value={{given_source_url}}
+        {% endif %} 
+       />
+      <br />
+    </div>
+    <div id="source-text" class="hidden">
+      {% spaceless %}
+      <textarea id="source-text-textarea" name="sourceText" placeholder="Paste source text here" rows="9" cols="70">
+        {% spaceless %}
+        {% if given_source_text %}
+          {{given_source_text}}
+        {% endif %} 
+        {% endspaceless %}
 
-{% for format_name in format_names %}
-    <input type="radio" name="formatName" id="formatName{{ forloop.counter }}" value="{{ format_name }}" 
-    {% if given_format_name and given_format_name == format_name %}
-      checked
-    {% endif %}
-    />
-    <label for="formatName{{ forloop.counter }}">{{ format_name|capfirst }}</label><br />
-{% endfor %}
-<br />
-
-<input type="submit" value="Poemize" />
+      </textarea>
+      {% endspaceless %}
+    </div>
+    <a href="#" id="switchPane" class="unpurpleable" data-other="Enter a URL instead">Paste plain text instead</a>
+    <br />
+    <br />
+  </li>
+  <li>
+    <div id="formatChoice">choose a poem format</div>
+    {% for format_name in format_names %}
+        <input type="radio" name="formatName" id="formatName{{ forloop.counter }}" value="{{ format_name }}" 
+        {% if given_format_name and given_format_name == format_name %}
+          checked
+        {% endif %}
+        />
+        <label for="formatName{{ forloop.counter }}">{{ format_name|capfirst|fixFormatNames }}</label><br />
+    {% endfor %}
+  </li>
+</ol>
+<input type="submit" id="submitPoem" value="Poemize" class="btn" />
 </form>
 
 <!-- UI: 

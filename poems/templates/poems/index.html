@@ -16,7 +16,12 @@ bottom right: newly-created poems
 
 -->
 {% block content %}
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if error_message %}
+  {% for em in error_message %}
+  <p><strong>{{ em }}</strong></p>
+  {% endfor %}
+{% endif %}
+
 <div id="center" style="">
   {% include 'poems/_new.html' %}
 </div>

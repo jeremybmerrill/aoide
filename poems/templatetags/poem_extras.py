@@ -9,7 +9,20 @@ def addpoemslashes(value):
 
 @register.filter(name='truncatefrontpage')
 def truncatefrontpage(value):
-  return addpoemslashes("\n".join(value.split("\n")[:4]))
+  max_length = 400
+  newval = []
+  for line in value.split("\n"):
+    newval.append(line)
+    if sum([len(l) for l in newval]) + len(line) > max_length:
+      break
+  return addpoemslashes("\n".join(newval) )
+
+@register.filter(name='fixFormatNames')
+def fixFormatNames(value):
+  if value == "Freeverse":
+    return "Free Verse"
+  else:
+    return value
 
 # @register.filter(name='cut')
 # def cut(value, arg):

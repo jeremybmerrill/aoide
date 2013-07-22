@@ -4,18 +4,42 @@
 
 {% block content %}
 
-<h1>A {{ poem.format_name }} 
-  {% if poem.source.title %}
-  from {{ poem.source.title }}
-  {% endif %}
-</h1>
-<h4 class="byline">by {{poem.author_name}}</h4>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<h1 id="format-name">A {{ poem.format_name }}</h1>
+
+{% if poem.author_name %}
+<h4 id="byline">by {{poem.author_name}}</h4>
+{% endif %}
+
+{% if poem.includes_partial_lines %}
+  <i id="partialLinesFlag" class="icon-flag" data-toggle="tooltip" data-title="partial lines were used in creating this poem" data-placement="right" data-trigger="hover focus"></i>
+{% endif %}
+
+<div style="clear: both;"></div>
+
+{% if poem.source.title %}
+  <h4 id="source-title">from <a class="source-link" href="{{ poem.source.address }}">{{ poem.source.title }}</a></h4>
+{% endif %}
+
 <div class="poem-detail {{poem.format_name|lower}}">
   {% autoescape off %}
   {{ poem|linebreaks }}
   {% endautoescape %}
 </div>
 
-<a href="{% url 'poems:index'%}">Do it again!</a>
+<a class="admonition" href="{% url 'poems:index'%}">Do it again!</a>
 
+<div id="share">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-text="TWEETTEXT"  data-size="large"  data-dnt="true">Tweet</a> <!-- data-via="" data-hashtags="" -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<div class="fb-like" data-href="{{request.path}}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="tahoma"></div></div>
 {% endblock %}

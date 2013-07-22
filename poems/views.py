@@ -4,19 +4,22 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse
 #from django.contrib.auth.decorators import login_required
+from django.core.files.base import File as DjangoFile
+
 
 from django.core.validators import URLValidator
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
 from django.template import RequestContext
 
-from poems.models import Poem, Source
+from poems.models import Poem, Source, Fridge
 import showemapoem.poemformat
 from showemapoem.poemifier import Poemifier
 from showemapoem.line import Line
 
 
 import urllib2
+import urlparse
 from boilerpipe.extract import Extractor
 
 import datetime
@@ -61,79 +64,138 @@ def snap(request, poem_id): #or roll eyes / sigh loudly
 
 #@login_required
 def create(request):
-    source_url = request.POST['sourceUrl']
-    format_name = request.POST['formatName']
-    source_text = request.POST['content']
-    given_context = {
-        'given_source_url': source_url, 
-        'given_format_name': format_name, 
-        "given_source_text": source_text,
-        'latest_poems_list': Poem.objects.order_by('-gen_date')[:5],
-        'best_poems_list': Poem.objects.order_by('-votes')[:5], #todo: denormalize database to keep track of sum of votes, or something
-        'format_names': [c.__name__ for c in showemapoem.poemformat.PoemFormat.__subclasses__()]
-      }
-    try:
-        validator = URLValidator()
-
-        #figure out whether to use source_text or source_url
-        if source_url:# and validator(source_url):
-            if (source = Entry.objects.get(address=source_url.split("#")[0]))
-              pass
-            else:
-              #fail if we've made too many requests to that URL or if we've already gotten that URL
-              html = urllib2.urlopen(source_url).read()
-              extractor = Extractor(extractor='DefaultExtractor', html=html)
-              #TODO: get title from extractor.html
-              source_text = extractor.getText()
-              source = Source()
-              source.text = source_text
-              source.created_date = datetime.datetime.now()
-              source.title = urlparse.urlparse(source_url)[1]
-              source.address = source_url.split("#")[0]
-
-        elif len(source_text) >= 50:
-            title = None
-        else:
-            raise ValidationError, "Too short and no URL"
-
-    except ValidationError, e:
-        # Redisplay the poll voting form.
-        given_context['error_message'] = e
-        return render(request, 'poems/index.html', given_context)
+    if request.method == 'GET':
+        return HttpResponseRedirect(reverse('poems:index',))
     else:
-        # UI: 
-        #  1. give boxes to choose source, format
-        #  2. "approval page" with button to "show it, poet" or not
-        #  3. share page
-        sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
-        linetexts = sent_detector.tokenize(source_text.replace("\r\n", ". "))
+        format_name = request.POST['formatName']
+        if 'sourceUrl' in request.POST:
+          source_url = request.POST['sourceUrl']
+        else:
+          source_url = None
+        if 'sourceText' in request.POST:
+          source_text = request.POST['sourceText']
+        else:
+          source_text = None
+        given_context = {
+            'given_source_url': source_url, 
+            'given_format_name': format_name, 
+            "given_source_text": source_text,
+            'latest_poems_list': Poem.objects.order_by('-gen_date')[:5],
+            'best_poems_list': Poem.objects.order_by('-votes')[:5], #todo: denormalize database to keep track of sum of votes, or something
+            'format_names': [c.__name__ for c in showemapoem.poemformat.PoemFormat.__subclasses__()]
+          }
+        try:
+            validator = URLValidator()
+            #figure out whether to use source_text or source_url
+            if source_text and len(source_url.strip()) == 0:
+                if len(source_text) > 50:# and validator(source_url):
+                    title = None
+                    source = None
+                    raise Exception, len(source_text)
+                else:
+                    raise ValidationError("Too short and no URL")
+            else:
+                try:
+                    source = Source.objects.get(address=source_url.split("#")[0])
+                except ObjectDoesNotExist:
+                    #fail if we've made too many requests to that URL or if we've already gotten that URL
+                    try:
+                      html = urllib2.urlopen(source_url).read()
+                    except urllib2.HTTPError:
+                        if "nytimes.com" in source_url:
+                            given_context['error_message'] = "Sorry, NYT pages don't work. Copy/paste the text yourself, or try a different page.".format(poemformat=format_name.lower()),
+                        else:
+                            given_context['error_message'] = "Sorry, couldn't fetch that page. Copy/paste the text yourself, or try a different URL.".format(poemformat=format_name.lower()),
+                        return render(request, 'poems/index.html', given_context)
 
-        poemFormatClass = getattr( showemapoem.poemformat, format_name )()
-        for allow_partial_lines in [False, True]:
-            p = Poemifier( poemFormatClass )
-            p.allow_partial_lines = allow_partial_lines
-            #this can't be a do... while, because we have to add all the lines, then do various processing steps.
-            for linetext in linetexts:
-              line = Line(linetext, p.rhyme_checker)
-              if line.should_be_skipped():
-                continue
-              #p.try_line(line) #too slow
-              p.add_line(line)
-            djangoPoem = Poem()
-            djangoPoem.source = source
-            raw_poem = p.create_poem(True)
-            if raw_poem:
-              break
-        if not raw_poem:
-            given_context['error_message'] = "Sorry, couldn't generate a {poemformat}. Try again?".format(poemformat=format_name.lower()),
+                    extractor = Extractor(extractor='DefaultExtractor', html=html)
+                    #TODO: get title from extractor.html
+                    source_text = extractor.getText()
+                    source = Source()
+                    source.text = source_text
+                    source.created_date = datetime.datetime.now()
+                    source.title = urlparse.urlparse(source_url)[1]
+                    source.address = source_url.split("#")[0]
+                    source.save()
+
+        except ValidationError as e:
+            # Redisplay the poll voting form.
+            given_context['error_message'] = e
             return render(request, 'poems/index.html', given_context)
         else:
-            poem_text = poemFormatClass.format_poem( raw_poem )
-            djangoPoem.text = poem_text
-            djangoPoem.format_name = format_name
-            djangoPoem.gen_date = datetime.datetime.now()
-            djangoPoem.save()
-            # Always return an HttpResponseRedirect after successfully dealing
-            # with POST data. This prevents data from being posted twice if a
-            # user hits the Back button.
-            return HttpResponseRedirect(reverse('poems:detail', args=(djangoPoem.id,)))
+            # UI: 
+            #  1. give boxes to choose source, format
+            #  2. "approval page" with button to "show it, poet" or not
+            #  3. share page
+            sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
+            linetexts = sent_detector.tokenize(source_text.replace("\r\n", ". "))
+            poemFormatClass = getattr( showemapoem.poemformat, format_name )()
+            for allow_partial_lines in [False, True]:
+                p = Poemifier( poemFormatClass )
+                if source:
+                    try:
+                        picklejar = Fridge.objects.get(format_name=format_name, source__address=source.address)
+                    except ObjectDoesNotExist:
+                        picklejar = None
+                else:
+                    picklejar = None
+                if picklejar:   #if pickle exists, unpickle here
+                    if not allow_partial_lines:
+                        try:
+                            p.take_out_of_fridge(open(str(picklejar.halfsour_nopartials.file), 'rb'))
+                            picklejar.halfsour_nopartials.close()
+                            print "getting poemifier from the fridge"
+                        except ValueError:
+                            continue
+                    else:
+                        p.take_out_of_fridge(open(str(picklejar.halfsour_partials.file), 'rb'))
+                        picklejar.halfsour_partials.close()
+                        print "getting poemifier from the fridge"
+                else:
+                    print "adding lines de novo"
+                    p.allow_partial_lines = allow_partial_lines
+                    #this can't be a do... while, because we have to add all the lines, then do various processing steps.
+                    for linetext in linetexts:
+                      line = Line(unicode(linetext), p.rhyme_checker)
+                      if line.should_be_skipped():
+                        continue
+                      #p.try_line(line) #too slow
+                      p.add_line(line)
+                    p.prep_for_creation()
+
+                djangoPoem = Poem()
+                djangoPoem.source = source
+                djangoPoem.includes_partial_lines = allow_partial_lines
+                raw_poem = p.create_poem(True)
+                if raw_poem:
+                  break
+
+        
+            if not raw_poem:
+                given_context['error_message'] = "Sorry, couldn't generate a {poemformat}. Try again?".format(poemformat=format_name.lower()),
+                return render(request, 'poems/index.html', given_context)
+            else:
+                #if pickled thing doesn't exist yet
+                if source and not picklejar:
+                    with open('/tmp/pickle', 'r+b') as f: #TODO: will have threaded problems
+                        picklejar = Fridge()
+                        if allow_partial_lines:
+                            picklejar.halfsour_partials = DjangoFile(f)
+                            p.put_in_fridge(picklejar.halfsour_partials.url)
+                        else:
+                            picklejar.halfsour_nopartials = DjangoFile(f)
+                            p.put_in_fridge(picklejar.halfsour_nopartials.url)
+                        picklejar.source = source
+                        picklejar.format_name = format_name
+                        picklejar.save()
+
+                source.save()
+                poem_text = poemFormatClass.format_poem( raw_poem )
+                djangoPoem.text = poem_text
+                djangoPoem.format_name = format_name
+                djangoPoem.gen_date = datetime.datetime.now()
+                djangoPoem.save()
+                # Always return an HttpResponseRedirect after successfully dealing
+                # with POST data. This prevents data from being posted twice if a
+                # user hits the Back button.
+                return HttpResponseRedirect(reverse('poems:detail', args=(djangoPoem.id,)))
