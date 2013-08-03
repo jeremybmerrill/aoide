@@ -2,10 +2,14 @@ div#header{
   margin-bottom: 50px;
 }
 
+div#content{
+  margin-bottom: 1.5em; /* matches div#footer height */
+}
+
 div#footer{
   position: fixed;
   bottom: 0em;
-  height: 1.5em;
+  height: 1.5em; /* matches div#content margin-bottom */
   margin-bottom: 0px;
   padding-bottom: 0.5em;
   background-color: white;

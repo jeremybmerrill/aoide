@@ -1,4 +1,5 @@
 python
+beautifulsoup
 jpype (crazy shit, needs jdk)
 python-boilerpipe
 set JAVA_HOME

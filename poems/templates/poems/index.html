@@ -3,7 +3,8 @@
 {% block title %}DIY Poems{% endblock %}
 
 {% block static %}
-    <script src="{{ STATIC_URL }}js/new_poems.js"></script>
+    <script src="{{ STATIC_URL }}js/paned_source_input.js"></script>
+    <script src="{{ STATIC_URL }}js/ensure_format_is_chosen.js"></script>
 {% endblock %}
 
 {% load poem_extras %}
@@ -44,17 +45,16 @@ bottom right: newly-created poems
 </div>
 <div id="bottom-right" class="half-width">
   <h3>popular</h3>
-  {% if best_poems_list %}
+  {% if popular_sources_list %}
       <ul>
-      {% for poem in best_poems_list %}
-          <li><a href="{% url 'poems:detail' poem_id=poem.id %}">{{ poem.text|truncatefrontpage }}</a></li>
+      {% for source in popular_sources_list %}
+          <li><a href="#">{{ source.title }}</a></li>
       {% endfor %}
       </ul>
   {% else %}
-      <p>No awesome poems :(</p>
+      <p>No popular sources :(</p>
   {% endif %}
 
-{% endblock %}
 </div>
 <div style="clear: both;"></div>
-
+{% endblock %}

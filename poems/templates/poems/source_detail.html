@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Source | DIY Poems{% endblock %}
+
+{% block static %}
+    <script src="{{ STATIC_URL }}js/ensure_format_is_chosen.js"></script>
+{% endblock %}
+
+
+{% block content %}
+{% load poem_extras %}
+
+<h6>Original Source: </h6>
+<h4><a href="{{source.address}}">{{source.title}}</a></h4>
+
+create another poem from this source?<br/>
+<!-- TODO: factor this out into a partial with _new -->
+<form action="{% url 'poems:create' %}" method="post">
+{% csrf_token %}
+<input type='hidden' name="sourceUrl" value="{{source.address}}" />
+<div id="formatChoice">
+  <h3>choose a poem format</h3>
+  {% for format_name in format_names %}
+      <input type="radio" name="formatName" class="formatName" id="formatName{{ forloop.counter }}" value="{{ format_name }}" 
+      {% if given_format_name and given_format_name == format_name %}
+        checked
+      {% endif %}
+      />
+      <label for="formatName{{ forloop.counter }}">{{ format_name|capfirst|fixFormatNames }}</label><br />
+  {% endfor %}
+</div>
+<input type="submit" id="submitPoem" value="Poemize" class="btn" disabled />
+</form>
+<div style="clear: both;"></div>
+{% endblock %}
