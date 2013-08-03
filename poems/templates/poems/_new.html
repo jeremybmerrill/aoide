@@ -33,18 +33,20 @@
     <br />
   </li>
   <li>
-    <div id="formatChoice">choose a poem format</div>
-    {% for format_name in format_names %}
-        <input type="radio" name="formatName" id="formatName{{ forloop.counter }}" value="{{ format_name }}" 
-        {% if given_format_name and given_format_name == format_name %}
-          checked
-        {% endif %}
-        />
-        <label for="formatName{{ forloop.counter }}">{{ format_name|capfirst|fixFormatNames }}</label><br />
-    {% endfor %}
+    <div id="formatChoice">
+      <h3>choose a poem format</h3>
+      {% for format_name in format_names %}
+          <input type="radio" name="formatName" class="formatName" id="formatName{{ forloop.counter }}" value="{{ format_name }}" 
+          {% if given_format_name and given_format_name == format_name %}
+            checked
+          {% endif %}
+          />
+          <label for="formatName{{ forloop.counter }}">{{ format_name|capfirst|fixFormatNames }}</label><br />
+      {% endfor %}
+    </div>
   </li>
 </ol>
-<input type="submit" id="submitPoem" value="Poemize" class="btn" />
+<input type="submit" id="submitPoem" value="Poemize" class="btn" disabled />
 </form>
 
 <!-- UI: 

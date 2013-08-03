@@ -12,7 +12,8 @@
     <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
     <script src="{{ STATIC_URL }}js/backbone-min.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-    <script src="{{ STATIC_URL }}js/poems.js"></script>
+    {% block static %}{% endblock %}
+
 
     <title>{% block title %}{% endblock %}</title>
 </head>

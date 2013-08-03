@@ -91,7 +91,6 @@ def create(request):
                 if len(source_text) > 50:# and validator(source_url):
                     title = None
                     source = None
-                    raise Exception, len(source_text)
                 else:
                     raise ValidationError("Too short and no URL")
             else:
@@ -188,8 +187,7 @@ def create(request):
                         picklejar.source = source
                         picklejar.format_name = format_name
                         picklejar.save()
-
-                source.save()
+                    source.save()
                 poem_text = poemFormatClass.format_poem( raw_poem )
                 djangoPoem.text = poem_text
                 djangoPoem.format_name = format_name

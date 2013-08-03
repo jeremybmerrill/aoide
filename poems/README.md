@@ -6,21 +6,24 @@ A script for generating arbitrary poems from "found" lines in a given input text
 design
   put each stanza of longer poems in their own <p>
   keep header on top? (fixed position?)
-
-JS validate to make sure people select a format
+  fancy format for free verse, limit length on free verse lines
 
 write algorithm post
 
-debug limerick 7: with NYT sex on campus article
-turn on randomness in poem generation?
-retain apostrophes, quotes, etc. somehow
 
-maybe
+sum shares as votes? (hard.)
+
+better rime comparison (e.g. working in stress, don't approve "very" and "Peggy" but do approve "he" and "Peggy")
+
+retain apostrophes, quotes, etc. somehow (when are they actually missing?)
+
+
+maybe:
 -------
 voting?
 users
   profiles
-generic views (more pythonic!!)
+class-based views (more pythonic!!)
 
 
 aws thing 
