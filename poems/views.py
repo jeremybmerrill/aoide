@@ -117,7 +117,7 @@ def create(request):
                     soup = BeautifulSoup.BeautifulSoup(html)
                     source_text = extractor.getText()
                     source = Source()
-                    source.text = source_text
+                    source.text = source_text.encode("utf8", "ignore")
                     source.created_date = datetime.datetime.now()
                     source.title = soup.title.string
                     source.address = source_url.split("#")[0]
@@ -133,35 +133,37 @@ def create(request):
             #  2. "approval page" with button to "show it, poet" or not
             #  3. share page
             sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
+            if source:
+                source_text = source.text
             linetexts = sent_detector.tokenize(source_text.replace("\r\n", ". "))
             poemFormatClass = getattr( showemapoem.poemformat, format_name )()
             for allow_partial_lines in [False, True]:
                 p = Poemifier( poemFormatClass )
+                p.allow_partial_lines = allow_partial_lines
                 if source:
                     try:
-                        picklejar = Fridge.objects.get(format_name=format_name, source__address=source.address)
+                        fridge = Fridge.objects.get(format_name=format_name, source__address=source.address)
                     except ObjectDoesNotExist:
-                        picklejar = None
+                        fridge = None
                 else:
-                    picklejar = None
-                if picklejar:   #if pickle exists, unpickle here
+                    fridge = None
+                if fridge:   #if pickle exists, unpickle here
                     if not allow_partial_lines:
                         try:
-                            p.take_out_of_fridge(open(str(picklejar.halfsour_nopartials.file), 'rb'))
-                            picklejar.halfsour_nopartials.close()
-                            print "getting poemifier from the fridge"
+                            p.take_out_of_fridge(open(str(fridge.halfsour_nopartials.file), 'rb'))
+                            fridge.halfsour_nopartials.close()
+                            print "getting nopartials poemifier from the fridge"
                         except ValueError:
                             continue
                     else:
-                        p.take_out_of_fridge(open(str(picklejar.halfsour_partials.file), 'rb'))
-                        picklejar.halfsour_partials.close()
-                        print "getting poemifier from the fridge"
+                        p.take_out_of_fridge(open(str(fridge.halfsour_partials.file), 'rb'))
+                        fridge.halfsour_partials.close()
+                        print "getting partials poemifier from the fridge"
                 else:
                     print "adding lines de novo"
-                    p.allow_partial_lines = allow_partial_lines
                     #this can't be a do... while, because we have to add all the lines, then do various processing steps.
                     for linetext in linetexts:
-                      line = Line(unicode(linetext), p.rhyme_checker)
+                      line = Line(linetext.encode("utf8", "ignore"), p.rhyme_checker)
                       if line.should_be_skipped():
                         continue
                       #p.try_line(line) #too slow
@@ -181,18 +183,18 @@ def create(request):
                 return render(request, 'poems/index.html', given_context)
             else:
                 #if pickled thing doesn't exist yet
-                if source and not picklejar:
+                if source and not fridge:
                     with open('/tmp/pickle', 'r+b') as f: #TODO: will have threaded problems
-                        picklejar = Fridge()
+                        fridge = Fridge()
                         if allow_partial_lines:
-                            picklejar.halfsour_partials = DjangoFile(f)
-                            p.put_in_fridge(picklejar.halfsour_partials.url)
+                            fridge.halfsour_partials = DjangoFile(f)
+                            p.put_in_fridge(fridge.halfsour_partials.url)
                         else:
-                            picklejar.halfsour_nopartials = DjangoFile(f)
-                            p.put_in_fridge(picklejar.halfsour_nopartials.url)
-                        picklejar.source = source
-                        picklejar.format_name = format_name
-                        picklejar.save()
+                            fridge.halfsour_nopartials = DjangoFile(f)
+                            p.put_in_fridge(fridge.halfsour_nopartials.url)
+                        fridge.source = source
+                        fridge.format_name = format_name
+                        fridge.save()
                     source.save()
                 poem_text = poemFormatClass.format_poem( raw_poem )
                 djangoPoem.text = poem_text
