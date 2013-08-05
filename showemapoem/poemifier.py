@@ -3,12 +3,12 @@
 
 from rhymetime import RhymeChecker, Pronunciation, Syllabification, Syllable
 from random import randint, shuffle, choice
-import re
 import sys
 import poemformat
 from line import Line
 import nltk.tokenize.punkt
 import nltk.data
+import string
 
 import cPickle as pickle
 
@@ -76,6 +76,18 @@ class Poemifier:
     jar['syllable_count_dict'] = self.syllable_count_dict
     jar['groups'] = self.groups
     pickle.dump( jar, open(pickle_file, 'wb') ) 
+
+  @staticmethod
+  def clean_text(text):
+    text = text.replace(u"“", "\"")
+    text = text.replace(u"”", "\"")
+    text = text.replace(u"’", "'")
+    text = text.replace(u"‘", "'")
+    text = text.replace(u"–", "-")
+    text = text.replace(u"‒", "-")
+    text = text.replace(u"―", "-")
+    text = text.replace(u"—", "-")
+    return text
 
   def add_line(self, line):
     """

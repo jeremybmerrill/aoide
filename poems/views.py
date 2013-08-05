@@ -115,9 +115,9 @@ def create(request):
                     extractor = Extractor(extractor='DefaultExtractor', html=html)
                     #TODO: get title from extractor.html
                     soup = BeautifulSoup.BeautifulSoup(html)
-                    source_text = extractor.getText()
+                    source_text = unicode(Poemifier.clean_text(extractor.getText())).encode("utf8", "ignore")
                     source = Source()
-                    source.text = source_text.encode("utf8", "ignore")
+                    source.text = source_text
                     source.created_date = datetime.datetime.now()
                     source.title = soup.title.string
                     source.address = source_url.split("#")[0]
@@ -163,7 +163,7 @@ def create(request):
                     print "adding lines de novo"
                     #this can't be a do... while, because we have to add all the lines, then do various processing steps.
                     for linetext in linetexts:
-                      line = Line(linetext.encode("utf8", "ignore"), p.rhyme_checker)
+                      line = Line(linetext.encode("utf8", "replace"), p.rhyme_checker)
                       if line.should_be_skipped():
                         continue
                       #p.try_line(line) #too slow
