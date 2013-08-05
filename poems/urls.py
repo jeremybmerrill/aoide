@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^create/$', views.create, name='create'),
 
     url(r'^sources/$', views.SourceListView.as_view()),
-    url(r'^sources/(?P<pk>\d+)/$', views.SourceDetailView.as_view()),
+    url(r'^sources/(?P<pk>\d+)/$', views.SourceDetailView.as_view(), name="source_detail"),
 
 
 )

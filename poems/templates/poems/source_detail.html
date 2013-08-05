@@ -13,6 +13,15 @@
 <h6>Original Source: </h6>
 <h4><a href="{{source.address}}">{{source.title}}</a></h4>
 
+{% if source.poem_set.count > 0 %}
+<h4>Poems from this source</h4>
+<ol>
+	{% for poem in source.poem_set.all %}
+		<li>{{ poem.format_name }}: <a href="{% url 'poems:detail' poem_id=poem.id %}">{{poem.text|truncatefrontpage}}</a></li>
+	{% endfor %}
+</ol>
+{% endif %}
+
 create another poem from this source?<br/>
 <!-- TODO: factor this out into a partial with _new -->
 <form action="{% url 'poems:create' %}" method="post">

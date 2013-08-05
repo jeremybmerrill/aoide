@@ -32,7 +32,7 @@ bottom right: newly-created poems
 </div>
 
 <div id="bottom-left" class="half-width">
-  <h3>latest</h3>
+  <h3>latest poems</h3>
   {% if latest_poems_list %}
       <ul>
       {% for poem in latest_poems_list %}
@@ -44,11 +44,11 @@ bottom right: newly-created poems
   {% endif %}
 </div>
 <div id="bottom-right" class="half-width">
-  <h3>popular</h3>
+  <h3>popular sources</h3>
   {% if popular_sources_list %}
       <ul>
       {% for source in popular_sources_list %}
-          <li><a href="#">{{ source.title }}</a></li>
+          <li><a href="{% url 'poems:source_detail' pk=source.pk %}">{{ source.title }}</a></li>
       {% endfor %}
       </ul>
   {% else %}
