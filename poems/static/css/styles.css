@@ -93,8 +93,11 @@ h4#source-title{
 
   display: inline;
 }
-.admonition{
-
+.admonition.btn{
+  display: inline;
+}
+.inline{
+  display: inline;
 }
 
 div.poem-detail p{
@@ -110,4 +113,8 @@ div.poem-detail.haiku p{
 }
 div.poem-detail.limerick p{
   font-size: 22px;
+}
+
+div#share{
+  margin-top: 10px;
 }

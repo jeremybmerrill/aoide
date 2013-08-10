@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load poem_extras %}
 
 {% block title %}{{ poem.format_name }}{% endblock %}
 
@@ -32,13 +33,8 @@
 </div>
 
 <h4>Do it again!</h4>
-<form action="{% url 'poems:create' %}" method="post">
-{% csrf_token %}
-<input type='hidden' name="sourceUrl" value="{{poem.source.address}}" />
-<input type='hidden' name="formatName" value="{{poem.format_name}}" />
+{% include 'poems/_new.html' with predecided_source_url=poem.source.address predecided_format_name=poem.format_name poem_button_text=poem.format_name|anotherify|safe %}
 
-<input class="admonition btn" type="submit" id="submitPoem" value="Another {{ poem.format_name|lower }}?" class="btn" />
-</form>
 
 <a class="admonition btn" href="{% url 'poems:index'%}">Start over?</a>
 
@@ -46,7 +42,8 @@
   <a href="https://twitter.com/share" class="twitter-share-button" data-text="TWEETTEXT"  data-size="large"  data-dnt="true">Tweet</a> <!-- data-via="" data-hashtags="" -->
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<div class="fb-like" data-href="{{request.path}}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="tahoma"></div></div>
+<div class="fb-like" data-href="{{request.build_absolute_uri}}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="tahoma"></div>
+</div>
 
 <script>
   $('#partialLinesFlag').tooltip('hide');

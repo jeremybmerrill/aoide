@@ -33,3 +33,8 @@ def fixFormatNames(value):
 # def lower(value): # Only one argument.
 #     """Converts a string into all lowercase"""
 #     return value.lower()
+
+@register.filter(name='anotherify')
+def anotherify(format_name):
+  a = "Another&nbsp;" + fixFormatNames(format_name).lower() + "?"
+  return a

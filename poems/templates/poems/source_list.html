@@ -1,9 +1,9 @@
 {% extends "base.html" %}
+{% load poem_extras %}
 
 {% block title %}DIY Poems{% endblock %}
 
 {% block content %}
-{% load poem_extras %}
 <ol>
 	{% for source in object_list %}
 	<li><a href="{{source.pk}}">{{source.title}}</a>: {{source.poem_set.count}} poems</li>

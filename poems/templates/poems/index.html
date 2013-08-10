@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load poem_extras %}
 
 {% block title %}DIY Poems{% endblock %}
 
@@ -6,8 +7,6 @@
     <script src="{{ STATIC_URL }}js/paned_source_input.js"></script>
     <script src="{{ STATIC_URL }}js/ensure_format_is_chosen.js"></script>
 {% endblock %}
-
-{% load poem_extras %}
 
 <!-- 
 
@@ -28,7 +27,7 @@ bottom right: newly-created poems
 {% endif %}
 
 <div id="center" style="">
-  {% include 'poems/_new.html' %}
+  {% include 'poems/_new.html' with predecided_source_url=None predecided_format_name=None poem_button_text="Poemize!" %}
 </div>
 
 <div id="bottom-left" class="half-width">

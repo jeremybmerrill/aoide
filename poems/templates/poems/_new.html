@@ -1,19 +1,32 @@
 {% load poem_extras %}
 
+{% if not predecided_source_url and not predecided_format_name %}
 <h2>make yr own poem</h2>
+{% endif %}
 
-<form action="{% url 'poems:create' %}" method="post">
+<form 
+{% if predecided_source_url or predecided_format_name %}
+  class="inline" 
+{% endif %}
+action="{% url 'poems:create' %}" method="post">
 {% csrf_token %}
+
+
+{% if not predecided_source_url and not predecided_format_name %}
 <ol>
+{% endif %}
+    {% if predecided_source_url %}
+      <input type='hidden' name="sourceUrl" value="{{poem.source.address}}" />
+    {% else %}
   <li>
     source text:
     <div id="source-url">
       <label for="sourceUrl">URL&nbsp;</label>
-      <input type="url" name="sourceUrl" id="source-url-input"
-        {% if given_source_url %}
-          value={{given_source_url}}
-        {% endif %} 
-       />
+        <input type="url" name="sourceUrl" id="source-url-input"
+          {% if given_source_url %}
+            value={{given_source_url}}
+          {% endif %} 
+         />
       <br />
     </div>
     <div id="source-text" class="hidden">
@@ -24,7 +37,6 @@
           {{given_source_text}}
         {% endif %} 
         {% endspaceless %}
-
       </textarea>
       {% endspaceless %}
     </div>
@@ -32,6 +44,10 @@
     <br />
     <br />
   </li>
+  {% endif %}
+  {% if predecided_format_name %}
+    <input type='hidden' name="formatName" value="{{poem.format_name}}" />
+  {% else %}
   <li>
     <div id="formatChoice">
       <h3>choose a poem format</h3>
@@ -45,8 +61,11 @@
       {% endfor %}
     </div>
   </li>
-</ol>
-<input type="submit" id="submitPoem" value="Poemize" class="btn" disabled />
+  {% endif %}
+{% if not predecided_source_url and not predecided_format_name %}
+  </ol>
+{% endif %}
+<input type="submit" id="submitPoem" value={{poem_button_text|safe}} class="admonition btn" disabled />
 </form>
 
 <!-- UI: 

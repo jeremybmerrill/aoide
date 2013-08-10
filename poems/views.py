@@ -93,11 +93,8 @@ def create(request):
             validator = URLValidator()
             #figure out whether to use source_text or source_url
             if source_text and len(source_url.strip()) == 0:
-                if len(source_text) > 50:# and validator(source_url):
-                    title = None
-                    source = None
-                else:
-                    raise ValidationError("Too short and no URL")
+                title = None
+                source = None
             else:
                 try:
                     source = Source.objects.get(address=source_url.split("#")[0])
@@ -115,7 +112,8 @@ def create(request):
                     extractor = Extractor(extractor='DefaultExtractor', html=html)
                     #TODO: get title from extractor.html
                     soup = BeautifulSoup.BeautifulSoup(html)
-                    source_text = unicode(Poemifier.clean_text(extractor.getText())).encode("utf8", "ignore")
+                    source_text = unicode(Poemifier.clean_text(extractor.getText()))
+                    
                     source = Source()
                     source.text = source_text
                     source.created_date = datetime.datetime.now()
